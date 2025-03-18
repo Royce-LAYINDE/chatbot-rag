@@ -1,0 +1,7 @@
+langchain_community
+langchain_google_genai
+pymupdf
+faiss-cpu
+scikit-learn
+fastapi
+uvicorn
