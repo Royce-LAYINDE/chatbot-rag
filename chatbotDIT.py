@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 from langchain.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
@@ -16,7 +17,14 @@ embedding_model = GoogleGenerativeAIEmbeddings(model=EMBEDDING_MODEL, google_api
 vector_store = FAISS.load_local(FAISS_PATH, embedding_model, allow_dangerous_deserialization=True)
 
 # Création de l’API avec FastAPI
-app = FastAPI()
+
+app = FastAPI(
+    title="Chatbot DIT API",
+    description="Bienvenue sur la documentation interactive du Chatbot RAG pour le Dakar Institute of Technology (DIT). "
+                "Ici, vous pouvez tester les endpoints disponibles et explorer l'API. N'hésitez pas à poser vos questions via l'endpoint /chat.",
+    version="1.0.0",
+    docs_url="/docs"
+)
 
 
 
@@ -26,11 +34,10 @@ class UserMessage(BaseModel):
     question: str
 
 @app.get("/")
-def bienvenue():
-    return {
-        "message": "Bonjour et bienvenue au Dakar Institute of Technology (DIT) ! "
-                   "Je suis Nico, votre assistant virtuel. En quoi puis-je vous aider aujourd'hui ?"
-    }
+def redirect_to_docs():
+    return RedirectResponse(url="/docs")
+
+
 
 @app.post("/chat")
 def chatbot_interaction(user_message: UserMessage):
