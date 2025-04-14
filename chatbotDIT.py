@@ -7,7 +7,7 @@ from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
 from langchain.schema import SystemMessage, HumanMessage
 
 # Configuration du modèle et de l'indexation
-API_KEY = "AIzaSyDAoRDqZJR8EJ3bZe5zoA62mqK2q7a8oMA"
+API_KEY = "GetYourOwn"
 EMBEDDING_MODEL = "models/embedding-001"
 LLM_MODEL = "gemini-1.5-flash"
 FAISS_PATH = "faiss_index"
