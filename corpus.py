@@ -6,7 +6,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 
 # Clé API et modèles
-API_KEY = "AIzaSyDAoRDqZJR8EJ3bZe5zoA62mqK2q7a8oMA"
+API_KEY = "GetYourOwn"
 EMBEDDING_MODEL = "models/embedding-001"
 LLM_MODEL = "gemini-1.5-flash"
 
